@@ -40,7 +40,7 @@ object findWord extends App {
     if (lines.isEmpty) 0
     else {
       if (lines.head contains wordToSearch) println(line + ": " + lines.head)
-      printLinesWith(lines.tail, wordToSearch, line++)
+      printLinesWith(lines.tail, wordToSearch, line+1)
     }
   }
 
