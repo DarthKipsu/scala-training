@@ -18,22 +18,11 @@ def leap() = {
     else year % 4 == 0
   }
   
-  def iterDirection(year1: Int, year2: Int): Int = {
-    if (year1 < year2) 1
-    else -1
-  }
-
   println("Give years: (separated by enter)")
   val year1, year2 = readInt
+  val iterDirection = if (year1 < year2) 1 else -1
 
-  var comma = false
-  for (year <- year1 to year2 by iterDirection(year1, year2)) {
-    if (isLeapYear(year)) {
-      if (comma) print(", ")
-      else comma = true
-      print(year)
-    }
-  }
+  (year1 to year2 by iterDirection).filter(isLeapYear).foreach(println)
 }
 
 println("a) Print a triangle by a given height.")
