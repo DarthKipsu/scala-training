@@ -24,11 +24,11 @@ object Complex {
 
 class Complex(val re: Double, val im: Double) {
 
-  def +(x: Complex) = new Complex(re + x.re, im + x.im)
-  def unary_- = new Complex(-re, -im)
+  def +(x: Complex) = Complex(re + x.re, im + x.im)
+  def unary_- = Complex(-re, -im)
   def -(x: Complex) = this + -x
-  def *(x: Complex) = new Complex(re * x.re - im * x.im, re * x.im + im * x.re)
-  def inverse = new Complex(re / (pow(re,2) + pow(im,2)), im / (pow(re,2) + pow(im,2)))
+  def *(x: Complex) = Complex(re * x.re - im * x.im, re * x.im + im * x.re)
+  def inverse = Complex(re / (pow(re,2) + pow(im,2)), im / (pow(re,2) + pow(im,2)))
   def /(x: Complex) = this * x.inverse
 
   override def toString = {
