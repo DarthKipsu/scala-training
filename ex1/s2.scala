@@ -38,7 +38,7 @@ object findWord extends App {
   }
 
   try {
-    val lines = Source.fromFile(args(0)).getLines().zipWithIndex.toList// toListin sijaan zipWithIndex, sillon voi foreachilla käydä läpi ja containilla vertailla (case(l, i))
+    val lines = Source.fromFile(args(0)).getLines().zipWithIndex.toList
     findWordByUserInput(lines, askForWord())
   } catch {
     case e: FileNotFoundException => println("Tiedostoa ei löytynyt!")
