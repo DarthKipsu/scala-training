@@ -41,19 +41,10 @@ class Seccounter(private var sec: Int,
   def getHours = hour
 
   def incSecond() = {
-    if (sec == 59) {
-      if (min == 59) {
-        if (hour == 23) hour = 0
-        else hour += 1
-
-        min = 0
-      } else {
-        min += 1
-      }
-      
-      sec = 0
-    } else {
-      sec += 1
+    sec = (sec + 1) % 60
+    if (sec == 0) {
+      min = (min + 1) % 60
+      if (min == 0) hour = (hour + 1) % 24
     }
   }
 
