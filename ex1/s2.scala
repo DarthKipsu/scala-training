@@ -20,12 +20,14 @@ object pelaa extends App {
   else println("You lose 100 virtual euros...")
 }
 
+
 object findWord extends App {
   @tailrec
-  def findWordByUserInput(lines: List[String], word: String): Int = {
+  def findWordByUserInput(lines: List[(String, Int)], word: String): Int = {
     if (word == "") 0
     else {
-      printLinesWith(lines, word, 1)
+      lines.filter { case(line, _) => line contains word }
+           .foreach { case(line, i) => println(i + ": " + line) }
       findWordByUserInput(lines, askForWord())
     }
   }
@@ -35,17 +37,8 @@ object findWord extends App {
     readLine
   }
 
-  @tailrec
-  def printLinesWith(lines: List[String], wordToSearch: String, line: Int): Int = {
-    if (lines.isEmpty) 0
-    else {
-      if (lines.head contains wordToSearch) println(line + ": " + lines.head)
-      printLinesWith(lines.tail, wordToSearch, line+1)
-    }
-  }
-
   try {
-    val lines = Source.fromFile(args(0)).getLines().toList
+    val lines = Source.fromFile(args(0)).getLines().zipWithIndex.toList// toListin sijaan zipWithIndex, sillon voi foreachilla käydä läpi ja containilla vertailla (case(l, i))
     findWordByUserInput(lines, askForWord())
   } catch {
     case e: FileNotFoundException => println("Tiedostoa ei löytynyt!")
