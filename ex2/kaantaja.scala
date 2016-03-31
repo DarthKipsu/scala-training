@@ -6,8 +6,7 @@ import scala.io.StdIn._
 
 object kaantaja extends App {
   @tailrec
-  def translate(dictionary: Map[String, String]): Int = {
-    val word = readLine
+  def translate(dictionary: Map[String, String], word: String): Int = {
     if (word == "") 0
     else {
       try {
@@ -15,7 +14,7 @@ object kaantaja extends App {
       } catch {
         case e: NoSuchElementException => println("VIRHE: En tunne sanaa " + word)
       }
-      translate(dictionary)
+      translate(dictionary, readLine)
     }
   }
 
@@ -24,7 +23,7 @@ object kaantaja extends App {
     val dictionary = lines.map(s => s(0) -> s(1)).toMap
 
     println("Sanat opittu! (tyhjä kysymysrivi lopettaa)")
-    translate(dictionary)
+    translate(dictionary, readLine)
   } catch {
     case e: FileNotFoundException => println("Sanakirjaa ei löytynyt!")
     case e: ArrayIndexOutOfBoundsException => println("Anna sanakirjan polku parametrina!")
