@@ -29,12 +29,9 @@ object Seccounter {
   }
 }
 
-class Seccounter(private var sec: Int,
-                 private var min: Int,
-                 private var hour: Int) {
-  def this() {
-    this(0,0,0)
-  }
+class Seccounter(private var sec: Int = 0,
+                 private var min: Int = 0,
+                 private var hour: Int = 0) {
 
   def getSeconds = sec
   def getMinutes = min
