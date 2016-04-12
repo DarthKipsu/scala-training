@@ -1,6 +1,6 @@
 import scala.math.abs
 
-object timer extends App {
+object timer1 extends App {
   // konstruointi ja negatiiviset parametrit
   var a = new MinSek(2,11)
   println(a)               // 2:11
