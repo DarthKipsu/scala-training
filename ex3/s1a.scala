@@ -46,8 +46,6 @@ object timer1 extends App {
 }
 
 class MinSek(val value: Int = 0) {
-  val min = value / 60
-  val sec = abs(value % 60)
 
   def this(min: Int, sec: Int) {
     this(min * 60 + sec)
@@ -66,8 +64,9 @@ class MinSek(val value: Int = 0) {
       if (num < 10) s"0${num}"
       else num.toString
     }
+    val sec = abs(value % 60)
 
     if (value < 0 && value > -60) s"-0:${stringify(sec)}"
-    else s"${min}:${stringify(sec)}"
+    else s"${value / 60}:${stringify(sec)}"
   }
 }

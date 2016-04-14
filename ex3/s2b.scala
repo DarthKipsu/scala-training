@@ -12,7 +12,7 @@ object interpreter extends App {
                |          -e Lists filenames ending with the given argument
                |          -b Lists filenames starting with the given argument
                |          -c Lists filenames containing the given argument
-               |       lo Guits program""".stripMargin)
+               |       lo Quits program""".stripMargin)
     interpret(newCommand)
   }
 

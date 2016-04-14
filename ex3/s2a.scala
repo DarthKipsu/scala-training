@@ -7,10 +7,7 @@ object prime extends App {
   object Primes {
     val primeStream = Stream.from(2).filter(isPrime)
 
-    def isPrime(x: Int) = {
-      if (x < 2) false
-      else !(2 to (x - 1)).exists(x % _ == 0)
-    }
+    def isPrime(x: Int) = (x >= 2) && !(2 to (x - 1)).exists(x % _ == 0)
 
     def first(n: Int) = primeStream.take(n).toList
 
