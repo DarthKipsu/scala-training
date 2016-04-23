@@ -49,19 +49,11 @@ toistaEhdolla (laskuri <= b) {
 kirjoita("Lukujen summa " + a + " ... " + b + " on " + summa)
 
 object Kieli {
-  import scala.annotation.tailrec
   import scala.io.StdIn.readInt
 
   def lue = readInt
   def kirjoita(value: Any) = println(value)
   def jos(pre: => Boolean) (block: => Unit) = if (pre) block
   def toista(times: Int) (block: => Unit) = for (_ <- 1 to times) block
-
-  @tailrec
-  def toistaEhdolla(pre: => Boolean) (block: => Unit): Unit = {
-    if (pre) {
-      block
-      toistaEhdolla(pre)(block)
-    }
-  }
+  def toistaEhdolla(pre: => Boolean) (block: => Unit): Unit = while (pre) block
 }
